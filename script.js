@@ -1,61 +1,80 @@
 'use strict';
 
-console.log(isNaN(parseFloat('enterNumber')));
+const hiddenNumber = function (myNumber, min, max) {
 
-const hiddenNumber = function (myNumber) {
     let startGame;
     let gameOver;
+    let attempts = 10;
 
     startGame = confirm("Угадай число от 1 до 100?");
 
     if (startGame) {
 
-        takeNumber(myNumber);
+        takeNumber(myNumber, attempts);
 
     } else {
         gameOver = alert("Игра окончена");
     }
 };
 
-const takeNumber = function (unknowNum) {
+const takeNumber = function (unknowNum, attempts) {
     let enterNumber;
 
-    enterNumber = prompt("Введите число от 1 до 100");
+    console.log(attempts);
+
+    enterNumber = prompt('Введите число от 1 до 100');
 
     if (enterNumber === null) {
-        return alert("Игра окончена");
+        return alert('Игра окончена');
     }
 
     while (enterNumber.trim() == '' || !isFinite(enterNumber)) {
-        alert("Введите число!");
-        enterNumber = prompt("Введите число от 1 до 100");
+        alert('Введи число!');
+        enterNumber = prompt('Введите число от 1 до 100');
     }
 
     enterNumber = Number(enterNumber);
 
+    attempts--;
+
     if (enterNumber < unknowNum) {
-        numLessAlert();
+        numLessAlert(attempts);
     }
 
     if (enterNumber > unknowNum) {
-        numMoreAlert();
+        numMoreAlert(attempts);
     }
 
     if (enterNumber === unknowNum) {
-        return hiddenNumber == alert("Поздравляю, Вы угадали!!!");
+        return alert('Поздравляю, Вы угадали!!!');
     }
 
-    takeNumber(unknowNum);
+
+    if (attempts === 0) {
+        let choose;
+
+        choose = confirm('Попытки закончились, хотите сыграть еще?');
+
+        if (choose) {
+            attempts = 10;
+        }
+    }
+
+    takeNumber(unknowNum, attempts);
 };
 
-const numLessAlert = function () {
+const numLessAlert = function (attempt) {
 
-    alert("Загаданное число меньше");
+    alert('Загаданное число меньше, осталось ' + attempt + ' попыток');
 };
 
-const numMoreAlert = function () {
+const numMoreAlert = function (attempt) {
 
-    alert("Загаданное число больше");
+    alert('Загаданное число больше, осталось ' + attempt + ' попыток');
 };
 
-hiddenNumber(55);
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+hiddenNumber(getRandomInt(1, 100)) > 10;
