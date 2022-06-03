@@ -65,12 +65,12 @@ const takeNumber = function (unknowNum, attempts) {
 
 const numLessAlert = function (attempt) {
 
-    alert('Загаданное число меньше, осталось ' + attempt + ' попыток');
+    alert('Загаданное число больше, осталось ' + attempt + ' попыток');
 };
 
 const numMoreAlert = function (attempt) {
 
-    alert('Загаданное число больше, осталось ' + attempt + ' попыток');
+    alert('Загаданное число меньше, осталось ' + attempt + ' попыток');
 };
 
 function getRandomInt(min, max) {
