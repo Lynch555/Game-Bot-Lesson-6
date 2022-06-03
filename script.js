@@ -50,12 +50,12 @@ const takeNumber = function (unknowNum) {
 
 const numLessAlert = function () {
 
-    alert("Загаданное число больше");
+    alert("Загаданное число больше. Попробуйте еще...");
 };
 
 const numMoreAlert = function () {
 
-    alert("Загаданное число меньше");
+    alert("Загаданное число меньше.Попробуйте еще...");
 };
 
 hiddenNumber(55);
