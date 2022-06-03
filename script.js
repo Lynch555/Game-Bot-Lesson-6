@@ -29,7 +29,7 @@ const takeNumber = function (unknowNum, attempts) {
     }
 
     while (enterNumber.trim() == '' || !isFinite(enterNumber)) {
-        alert('Введи число!');
+        alert('Введите число!');
         enterNumber = prompt('Введите число от 1 до 100');
     }
 
